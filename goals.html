@@ -1,33 +1,26 @@
-<!doctype html>
-<html>
+<!DOCTYPE HTML>
+<!--[if IEMobile 7 ]><html class="no-js iem7" manifest="default.appcache?v=1"><![endif]--> 
+<!--[if lt IE 7 ]><html class="no-js ie6" lang="en"><![endif]--> 
+<!--[if IE 7 ]><html class="no-js ie7" lang="en"><![endif]--> 
+<!--[if IE 8 ]><html class="no-js ie8" lang="en"><![endif]--> 
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
+    <title> My Goals Dashboard</title>
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> My Goals Status</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        body {
-            padding-top: 20px;
-            padding-bottom: 40px;
-        }
-
-        /* Custom container */
-        .container-narrow {
-            margin: 0 auto;
-            max-width: 700px;
-        }
-
-        .container-narrow > hr {
-                margin: 30px 0;
-            }
-
-        /* Supporting marketing content */
-        .marketing {
-            margin: 60px 0;
-        }
-
-    </style>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="Bettina Shzu-Juraschek" />
+    <link rel='stylesheet' id='screen-css'  href='style.css' type='text/css' media='screen' />
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'><html>
+   
     <script type="text/javascript">
+        window.onload = function() { init() };
+       var options = {
+            tooltips: {
+                fontSize: '75%'
+            }
+        };
         window.onload = function() { init() };
 
         var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Avk3bT7BgmlidEg2UXViSU12N1RGVGMtODhDVjVpb3c&output=html';
@@ -37,53 +30,115 @@
                          callback: showInfo,
                          simpleSheet: true } )
         }
+        
+        // define colors for the pie chart
+        var colors = new Array("#2ecc71", "#e74c3c", "#e67e22", "#16a085");
+        // array for the entries of the pie data
+        var pieData = [];
+        
         function showInfo(data, tabletop) {
-        console.log(data);
-        // data.push({
-        //     value: value,
-        //     color: colors[ data.length ]
-        //     });    
+            // for each table row, create a value for the pie chart
+            var ind;
+            for (ind = 0; ind < data.length; ind++) {
+                var entry = {
+                    // name of income for the label
+                    label: data[ind].name,
+                    // value of income, cast from string to integer
+                    value: +data[ind].incomefor2013,
+                    // color from hardcoded colors array
+                    color: colors[ind],
+                    labelColor: '#FFFFFF',
+                    labelFontSize: '12',
+                    labelAlign: 'center'
+                }
+                // add entry to pie data
+                pieData.push(entry);
+            }
+            //console.log(pieData);
+            
+            // create pie chart with pie data
+            var mChart = new Chart(document.getElementById("moneyChart").getContext("2d"), options);
+            var myPie = mChart.Pie(pieData, {
+                animation: true,
+                animationSteps: 100,
+                animationEasing: 'easeOutBounce'
+            });
         }
     </script>
 </head>
 
 <body>
 
-    <div class="container-narrow">
-
-        <div class="masthead">
-            <h3 class="muted"> ♥ My Life in Doughnuts, Pies and Other Yummy Charts ♥ </h3>
+<div id="nav" class="wrapper bgkPink">
+    <div class="central" style="padding-left: 12px">
+        <div class="col1">
+            <div class="contBlock">
+                &nbsp;
+            </div>t
         </div>
-
-        <hr>
-
-        <div class="row-fluid marketing">
-            <div class="span6">
-                <h4>Where does my money come from?</h4>
-                <p>I have a few side projects, and I wanted to see how much money they were bringing in compared to each other. Because I'm not ready to share the exact numbers of my income, a pie chart allows me to compare them as percentages of my total income rather than using the exact dollar amounts.</p>
-                <p><canvas id="moneyChart" width="400" height="400"></canvas></p>
-
-                <hr>
-
-                <h4>How much do I code?</h4>
-                <p>I first learned how to code in Ruby on Rails last year, and now I've started learning Javascript for charts.js as well as node.js. The more I code, the more I learn. I pulled the number of contributions I've made this year so far from GitHub.</p>
-                <p><canvas id="codeChart" height="400" width="400"></canvas></p>
-
-                <hr>
-
-                <h4>How often do I practice my healthy habits?</h4>
-                <p>Every day I try to fit in yoga, meditation, journaling, and 20 wimpy wall pushups. This shows how successful I am with each over time.</p>
-                <p><canvas id="healthChart" height="400" width="400"></canvas></p>
+        <div class="col6">
+            <div style="position: relative; margin-left: 12px">
+            <!-- <nav id="access" role="navigation"> -->
+                <h2 id="title"><br>My Goals Dashboard</h2>                
+            <!-- </nav> -->
             </div>
         </div>
-
-        <hr>
-
-        <div class="footer">
-            <p>Made possible with <a href="http://www.chartjs.org" target="_blank" title="Chart.js">Chart.js</a></p>
+        <div class="col1">
+            <div class="contBlock">
+                &nbsp;
+            </div>
         </div>
-
     </div>
+</div>
+
+<!-- Module Grid -->
+
+<div id="theGrid" class="wrapper bgk endingModuleGutter">
+    <div class="central leftSpacer">
+        <div class="centralCol colTopSpaceer">
+            <div class="contBlock centerAlign">
+            </div>
+        </div>
+    </div>
+
+        <!-- Loop the works -->
+        
+    <div class="central leftSpacer">
+        <div class="centralCol">
+            <div class="contBlock">
+                <h1 style="text-align: center; padding-bottom: 6px;">Where does my money come from?</h1>
+                <div class="date" style="text-align: center; padding-bottom: 24px;">Tracking income makes me appreciate money more.</div>
+                 <canvas id="moneyChart" width="400" height="400"></canvas>
+                <h2> <p>I have a few side projects, and I wanted to see how much money they were bringing in compared to each other. 
+                <p>
+                Because I'm not ready to share the exact numbers of my income, a pie chart allows me to compare them as percentages of my total income rather than using the exact dollar amounts.</p><br><br></h2>
+            </div>    
+        </div>
+    </div>
+
+    <div class="central leftSpacer">
+        <div class="centralCol">
+            <div class="contBlock">
+                <h1 style="text-align: center; padding-bottom: 6px;">How much do I code?</h1>
+                <div class="date" style="text-align: center; padding-bottom: 24px;">...starting only in April...</div>
+                <canvas id="codeChart" height="400" width="400"></canvas>
+                <h2> <p>I first learned how to code in Ruby on Rails last year, and now I've started learning Javascript for charts.js as well as node.js. The more I code, the more I learn. I pulled the number of contributions I've made this year so far from GitHub.<br><br></p></h2>
+            </div>    
+        </div>
+    </div>
+
+  <div class="central leftSpacer">
+        <div class="centralCol">
+            <div class="contBlock">
+                <h1 style="text-align: center; padding-bottom: 6px;">How often do I practice my healthy habits?</h1>
+                <div class="date" style="text-align: center; padding-bottom: 24px;">Health is the foundation for everything else I do.</div>
+                <canvas id="healthChart" width="400" height="400"></canvas>
+                <h2> <p>Every day I try to fit in yoga, meditation, journaling, and 20 wimpy wall pushups. This shows how successful I am with each over time. I only started tracking this data in mid-June.<br><br></p></h2>
+            </div>    
+        </div>
+    </div>
+</div>
+        
 
 <script src="Tabletop.js"></script>
 
@@ -91,4 +146,26 @@
 
 <script src="Doughnut.js"></script>
 
+
+<div id="footer" class="wrapper bgkBlue endingModuleGutter">
+    <div class="central leftSpacer">
+        <div class="col8 colTopSpaceer">
+            <div class="contBlock centerAlign">
+                    <h3 class="labelMargins">Made possible by</h3>
+                    <p style="padding-bottom: 3px;">
+                    my husband Felix, <br>
+                    my coach <a href="https://github.com/autarc">Stefan</a>,<br>
+                    &amp; <a href="http://www.chartjs.org">Chart.js</a>
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+                    July 2013, Berlin
+            </div>
+        </div>
+    </div>
+</div>    
+
 </body>
+  
+</html>

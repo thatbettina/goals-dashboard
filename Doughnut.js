@@ -1,52 +1,52 @@
 
 //Get the context of the canvas element we want to select
 
-var pieData = [
-		{
-		    value: 10,
-		    color: "#2ecc71",
-		    label: 'IQS',
-		    labelColor: 'white',
-		    labelFontSize: '12',
-		    labelAlign: 'center'
-		},
-		{
-		    value: 35,
-		    color: "#e74c3c",
-		    label: 'Android app',
-		    labelColor: '#FFFFFF',
-		    labelFontSize: '12',
-		    labelAlign: 'center'
-		},
-		{
-		    value: 305,
-		    color: "#e67e22",
-		    label: 'ALG',
-		    labelColor: '#FFFFFF',
-		    labelFontSize: '12',
-		    labelAlign: 'center'
-		},
-		{
-		    value: 3,
-		    color: "#16a085",
-		    label: 'ROI',
-		    labelColor: '#000000',
-		    labelFontSize: '4',
-		    labelAlign: 'center'
-		}
-];
+// var pieData = [
+// 		{
+// 		    value: 410,
+// 		    color: "#2ecc71",
+// 		    label: 'IQS',
+// 		    labelColor: 'white',
+// 		    labelFontSize: '12',
+// 		    labelAlign: 'center'
+// 		},
+// 		{
+// 		    value: 200,
+// 		    color: "#e74c3c",
+// 		    label: 'App',
+// 		    labelColor: '#FFFFFF',
+// 		    labelFontSize: '12',
+// 		    labelAlign: 'center'
+// 		},
+// 		{
+// 		    value: 2000,
+// 		    color: "#e67e22",
+// 		    label: 'ALG',
+// 		    labelColor: '#FFFFFF',
+// 		    labelFontSize: '12',
+// 		    labelAlign: 'center'
+// 		},
+// 		{
+// 		    value: 1500,
+// 		    color: "#16a085",
+// 		    label: 'ROI',
+// 		    labelColor: '#000000',
+// 		    labelFontSize: '4',
+// 		    labelAlign: 'center'
+// 		}
+// ];
 
-var options = {
-    tooltips: {
-        fontSize: '75%'
-    }
-};
+// var options = {
+//     tooltips: {
+//         fontSize: '75%'
+//     }
+// };
 
-var myChart = new Chart(document.getElementById("moneyChart").getContext("2d"), options);
-var myPie = myChart.Pie(pieData, {
-    animationSteps: 100,
-    animationEasing: 'easeOutBounce'
-});
+// var myChart = new Chart(document.getElementById("moneyChart").getContext("2d"), options);
+// var myPie = myChart.Pie(pieData, {
+//     animationSteps: 100,
+//     animationEasing: 'easeOutBounce'
+// });
 
 var lineData = {
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
