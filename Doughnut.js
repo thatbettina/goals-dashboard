@@ -69,32 +69,22 @@ var myLine = myChart.Line(lineData, {
     animationEasing: 'easeOutQuart'
 });
 
-var polarData = [
-	        {
-                label:"Yoga",
-	            value: 5,
-	            color: "#3498db"
-	        },
-	        {
-                label:"Meditation",
-	            value: 15,
-	            color: "#d35400"
-	        },
-	        {
-                label:"Wall Push-ups",
-	            value: 22,
-	            color: "#16a085"
-	        },
-	        {
-                label:"Journaling",
-	            value: 26,
-	            color: "#c0392b"
-	        }
-        ];
+var radarData = {
+	labels : ["Yoga","Meditation","Eating Vegan","Sleeping 8 hours","Journaling", "Push-Ups"],
+	datasets : 
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,1)",
+			pointColor : "rgba(220,220,220,1)",
+			pointStrokeColor : "#fff",
+			data : [65,59,90,81,56,55,40]
+		},
+	]
+}
 
-        myChart = new Chart(document.getElementById("healthChart").getContext("2d"), options);
-        var myLine = myChart.PolarArea(polarData, {
-            animation: true,
-            animationSteps: 100,
-            animationEasing: 'easeOutQuart'
+myChart = new Chart(document.getElementById("healthChart").getContext("2d"), options);
+    var myLine = myChart.Radar(radarData, {
+        animation: true,
+        animationSteps: 100,
+        animationEasing: 'easeOutQuart'
         });
