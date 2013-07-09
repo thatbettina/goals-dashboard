@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+    <title>Musings with ChartJS</title>
+    <script src="js/Chart.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        /* Custom container */
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+            .container-narrow > hr {
+                margin: 30px 0;
+            }
+
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+            .jumbotron h1 {
+                font-size: 72px;
+                line-height: 1;
+            }
+
+            .jumbotron .btn {
+                font-size: 21px;
+                padding: 14px 24px;
+            }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 60px 0;
+        }
+
+            .marketing p + h4 {
+                margin-top: 28px;
+            }
+    </style>
+</head>
+<body>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <div class="container-narrow">
+
+        <div class="masthead">
+            <h3 class="muted">Musings with chart.js</h3>
+        </div>
+
+        <hr>
+
+        <div class="row-fluid marketing">
+            <div class="span6">
+                <h4>Website</h4>
+                <p>I maintain a website for a charity organization and following is the statistics that I collect on the number of hits that the website receives in a year. Here is the link to the <a href="http://channelsofglory.org/" target="_blank" title="Click to open website in another tab">website</a>. Analysis? USA is the most charitable country in the world.</p>
+                <p><canvas id="websitecanvas" height="300" width="300"></canvas></p>
+
+                <hr>
+
+                <h4>Spam</h4>
+                <p>Lots of spam emails everyday. I created a monitor to track that. Amazing to discover that spams are sent most on Thursdays and Fridays.</p>
+                <p><canvas id="spamcanvas" height="300" width="300"></canvas></p>
+
+                <hr>
+
+                <h4>Miles</h4>
+                <p>Another chart that I used to track my miles for Business vs. Pleasure. Discovery? Summer months are more for pleasure and Winter months are more for Business.</p>
+                <p><canvas id="milescanvas" height="300" width="300"></canvas></p>
+            </div>
+            <div class="span6">
+                <h4>Debugging Hours</h4>
+                <p>A well-rested body is good for coding. Unfortunately that's not the case, especially for an entrepreneur like me. I wanted to check if there is a direct relation between number of hours sleeping and coding efficiency. So I embarked on a small project to track my hours. And here is my result. I realized, the more I sleep, the less I spent hours debugging my code. Sleep is good!</p>
+                <p><canvas id="debugcanvas" height="400" width="400"></canvas></p>
+
+                <hr>
+
+                <h4>Language</h4>
+                <p>Working in a start-up world, I've observed the liberal usage of dreaded "eff-word" by co-workers. So another one of my graph to check whether it has to do anything with time of the day. And what an analysis from that! Mornings are pleasant and as it progresses towards the evenings, the polar area increases in curses ;)</p>
+                <p><canvas id="languagecanvas" height="400" width="400"></canvas></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer">
+            <p>Have a great day!</p>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        var pieData = [
+				{
+				    value: 77,
+				    color: "#FFA200",
+				    label: 'USA',
+				    labelColor: 'white',
+				    labelFontSize: '12',
+				    labelAlign: 'center'
+				},
+				{
+				    value: 10,
+				    color: "#0094B3",
+				    label: 'India',
+				    labelColor: '#FFFFFF',
+				    labelFontSize: '12',
+				    labelAlign: 'center'
+				},
+				{
+				    value: 8,
+				    color: "#002B45",
+				    label: 'Canada',
+				    labelColor: '#FFFFFF',
+				    labelFontSize: '12',
+				    labelAlign: 'center'
+				},
+				{
+				    value: 3,
+				    color: "#A0DAE8",
+				    label: 'Saudia Arabia',
+				    labelColor: '#000000',
+				    labelFontSize: '4',
+				    labelAlign: 'center'
+				},
+				{
+				    value: 3,
+				    color: "#66BC29",
+				    label: 'China',
+				    labelColor: '#FFFFFF',
+				    labelFontSize: '4',
+				    labelAlign: 'center'
+				},
+				{
+				    value: 3,
+				    color: "#BED600",
+				    label: 'Brazil',
+				    labelColor: '#000000',
+				    labelFontSize: '4',
+				    labelAlign: 'center'
+				},
+				{
+				    value: 3,
+				    color: "#002B45",
+				    label: 'Kuwait',
+				    labelColor: '#FFFFFF',
+				    labelFontSize: '4',
+				    labelAlign: 'center'
+				}
+        ];
+
+        var options = {
+            tooltips: {
+                fontSize: '75%'
+            }
+        };
+
+        var myChart = new Chart(document.getElementById("websitecanvas").getContext("2d"), options);
+        var myPie = myChart.Pie(pieData, {
+            animationSteps: 100,
+            animationEasing: 'easeOutBounce'
+        });
+
+        var barData = {
+            labels : ["Sun","Mon","Tues","Wed","Thu","Fri","Sat"],
+            datasets : [
+                {
+                    fillColor: "#0094B3",
+                    strokeColor: "#FFA200",
+                    data : [1,2,3,5,8,9,4]
+                }
+            ]
+        };
+
+        myChart = new Chart(document.getElementById("spamcanvas").getContext("2d"), options);
+        var myBar = myChart.Bar(barData, {
+            animation: true,
+            animationSteps: 100,
+            animationEasing: 'easeOutQuart'
+        });
+
+        var lineData = {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            datasets: [
+                {
+                    label:"Business",
+                    fillColor: "#0094B3",
+                    strokeColor: "#66BC29",
+                    pointColor: "#002B45",
+                    pointStrokeColor: "#fff",
+                    data: [65, 59, 90, 81, 56, 55, 40]
+                },
+                {
+                    label:"Pleasure",
+                    fillColor: "#FFA200",
+                    strokeColor: "#002B45",
+                    pointColor: "#66BC29",
+                    pointStrokeColor: "#fff",
+                    data: [28, 48, 40, 19, 96, 27, 100]
+                }
+            ]
+        }
+
+        myChart = new Chart(document.getElementById("milescanvas").getContext("2d"), options);
+        var myLine = myChart.Line(lineData, {
+            animation: true,
+            animationSteps: 100,
+            animationEasing: 'easeOutQuart'
+        });
+
+        var radarData = {
+            labels: ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [
+                {
+                    label:"Sleep",
+                    fillColor: "#0094B3",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "#002B45",
+                    pointStrokeColor: "#fff",
+                    data: [8, 6, 5, 4, 4, 3, 10]
+                },
+                {
+                    label:"Debug",
+                    fillColor: "#FFA200",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "#66BC29",
+                    pointStrokeColor: "#fff",
+                    data: [0, 2, 3, 5, 6, 8, 0]
+                }
+            ]
+        }
+
+        myChart = new Chart(document.getElementById("debugcanvas").getContext("2d"), options);
+        var myLine = myChart.Radar(radarData, {
+            animation: true,
+            animationSteps: 100,
+            animationEasing: 'easeOutQuart'
+        });
+
+        var polarData = [
+	        {
+                label:"Morning",
+	            value: 5,
+	            color: "#A0DAE8"
+	        },
+	        {
+                label:"Afternoon",
+	            value: 15,
+	            color: "#FFA200"
+	        },
+	        {
+                label:"Evening",
+	            value: 22,
+	            color: "#BED600"
+	        },
+	        {
+                label:"Night",
+	            value: 26,
+	            color: "#002B45"
+	        }
+        ];
+
+        myChart = new Chart(document.getElementById("languagecanvas").getContext("2d"), options);
+        var myLine = myChart.PolarArea(polarData, {
+            animation: true,
+            animationSteps: 100,
+            animationEasing: 'easeOutQuart'
+        });
+
+    </script>
+</body>
+</html>

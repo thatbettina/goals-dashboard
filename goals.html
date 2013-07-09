@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> My Goals Status</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        /* Custom container */
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        .container-narrow > hr {
+                margin: 30px 0;
+            }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 60px 0;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function() { init() };
+
+        var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0Avk3bT7BgmlidEg2UXViSU12N1RGVGMtODhDVjVpb3c&output=html';
+
+        function init() {
+        Tabletop.init( { key: public_spreadsheet_url,
+                         callback: showInfo,
+                         simpleSheet: true } )
+        }
+        function showInfo(data, tabletop) {
+        console.log(data);
+        // data.push({
+        //     value: value,
+        //     color: colors[ data.length ]
+        //     });    
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container-narrow">
+
+        <div class="masthead">
+            <h3 class="muted"> ♥ My Life in Doughnuts, Pies and Other Yummy Charts ♥ </h3>
+        </div>
+
+        <hr>
+
+        <div class="row-fluid marketing">
+            <div class="span6">
+                <h4>Where does my money come from?</h4>
+                <p>I have a few side projects, and I wanted to see how much money they were bringing in compared to each other. Because I'm not ready to share the exact numbers of my income, a pie chart allows me to compare them as percentages of my total income rather than using the exact dollar amounts.</p>
+                <p><canvas id="moneyChart" width="400" height="400"></canvas></p>
+
+                <hr>
+
+                <h4>How much do I code?</h4>
+                <p>I first learned how to code in Ruby on Rails last year, and now I've started learning Javascript for charts.js as well as node.js. The more I code, the more I learn. I pulled the number of contributions I've made this year so far from GitHub.</p>
+                <p><canvas id="codeChart" height="400" width="400"></canvas></p>
+
+                <hr>
+
+                <h4>How often do I practice my healthy habits?</h4>
+                <p>Every day I try to fit in yoga, meditation, journaling, and 20 wimpy wall pushups. This shows how successful I am with each over time.</p>
+                <p><canvas id="healthChart" height="400" width="400"></canvas></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="footer">
+            <p>Made possible with <a href="http://www.chartjs.org" target="_blank" title="Chart.js">Chart.js</a></p>
+        </div>
+
+    </div>
+
+<script src="Tabletop.js"></script>
+
+<script src="Chart.js"></script>
+
+<script src="Doughnut.js"></script>
+
+</body>
