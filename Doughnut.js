@@ -54,8 +54,8 @@ var lineData = {
                 {
                     label:"Lines Coded",
                     fillColor: "#9b59b6",
-                    strokeColor: "#8e44ad",
-                    pointColor: "#8e44ad",
+                    strokeColor: "#bdc3c7",
+                    pointColor: "#34495e",
                     pointStrokeColor: "#fff",
                     data: [0, 0, 0, 0, 17, 22, 8]
                 }
@@ -71,19 +71,26 @@ var myLine = myChart.Line(lineData, {
 
 var radarData = {
 	labels : ["Yoga","Meditation","Eating Vegan","Sleeping 8 hours","Journaling", "Push-Ups"],
-	datasets : 
+	datasets : [
 		{
-			fillColor : "rgba(220,220,220,0.5)",
-			strokeColor : "rgba(220,220,220,1)",
-			pointColor : "rgba(220,220,220,1)",
-			pointStrokeColor : "#fff",
-			data : [65,59,90,81,56,55,40]
+			fillColor : "#95a5a6",
+			strokeColor : "#bdc3c7",
+			pointColor : "#34495e",
+			pointStrokeColor : "#000000",
+			data : [3, 5, 4, 1, 6, 5]
 		},
+        {
+            fillColor : "#e74c3c",
+            strokeColor : "#bdc3c7",
+            pointColor : "#34495e",
+            pointStrokeColor : "#000000",
+            data : [0, 2, 4, 2, 7, 6]
+        }
 	]
 }
 
 myChart = new Chart(document.getElementById("healthChart").getContext("2d"), options);
-    var myLine = myChart.Radar(radarData, {
+    var myRadar = myChart.Radar(radarData, {
         animation: true,
         animationSteps: 100,
         animationEasing: 'easeOutQuart'

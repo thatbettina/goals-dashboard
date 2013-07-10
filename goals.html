@@ -12,7 +12,6 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="author" content="Bettina Shzu-Juraschek" />
     <link rel='stylesheet' id='screen-css'  href='style.css' type='text/css' media='screen' />
-    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'><html>
    
     <script type="text/javascript">
         window.onload = function() { init() };
@@ -74,13 +73,12 @@
         <div class="col1">
             <div class="contBlock">
                 &nbsp;
-            </div>t
+            </div>
         </div>
         <div class="col6">
-            <div style="position: relative; margin-left: 12px">
-            <!-- <nav id="access" role="navigation"> -->
-                <h2 id="title"><br>My Goals Dashboard</h2>                
-            <!-- </nav> -->
+            <div id="title">
+            <h2>My Goals Dashboard</h2>    
+            <h3> Publicly sharing my goals keeps me honest.</h3>            
             </div>
         </div>
         <div class="col1">
@@ -112,6 +110,7 @@
                 <h2> <p>I have a few side projects, and I wanted to see how much money they were bringing in compared to each other. 
                 <p>
                 Because I'm not ready to share the exact numbers of my income, a pie chart allows me to compare them as percentages of my total income rather than using the exact dollar amounts.</p><br><br></h2>
+                <br style='clear: both;' />
             </div>    
         </div>
     </div>
@@ -123,6 +122,7 @@
                 <div class="date" style="text-align: center; padding-bottom: 24px;">...starting only in April...</div>
                 <canvas id="codeChart" height="400" width="400"></canvas>
                 <h2> <p>I first learned how to code in Ruby on Rails last year, and now I've started learning Javascript for charts.js as well as node.js. The more I code, the more I learn. I pulled the number of contributions I've made this year so far from GitHub.<br><br></p></h2>
+                <br style='clear: both;' />
             </div>    
         </div>
     </div>
@@ -133,7 +133,9 @@
                 <h1 style="text-align: center; padding-bottom: 6px;">How often do I practice my healthy habits?</h1>
                 <div class="date" style="text-align: center; padding-bottom: 24px;">Health is the foundation for everything else I do.</div>
                 <canvas id="healthChart" width="400" height="400"></canvas>
-                <h2> <p>Every day I try to fit in yoga, meditation, journaling, and 20 wimpy wall pushups. This shows how successful I am with each over time. I only started tracking this data in mid-June.<br><br></p></h2>
+                <h2> <p>Every day I try to fit in yoga, meditation, journaling, and 20 wimpy wall pushups. Each blot on the radar is for one week, so each bar represents one day.<br>
+                If I practice all healthy habits every day for one week, the blot should cover the entire radar. <br><br></p></h2>
+                <br style='clear: both;' />
             </div>    
         </div>
     </div>
@@ -146,6 +148,7 @@
                 <div class="date" style="text-align: center; padding-bottom: 24px;">What can I say? I need arm muscles.</div>
                 
                 <h1><center><p>3</center><br><br></p></h1>
+                <br style='clear: both;' />
             </div>    
         </div>
     </div>
@@ -165,9 +168,10 @@
             <div class="contBlock centerAlign">
                     <h3 class="labelMargins">Made possible by</h3>
                     <p style="padding-bottom: 3px;">
-                    my husband Felix, <br>
+                    my husband, <br>
                     my coach <a href="https://github.com/autarc">Stefan</a>,<br>
-                    &amp; <a href="http://www.chartjs.org">Chart.js</a>
+                    <a href="http://www.chartjs.org">Chart.js</a>,
+                    &amp; <a href="https://github.com/jsoma/tabletop">Tabletop.js</a>
                     </p>
                     <br>
                     <br>
